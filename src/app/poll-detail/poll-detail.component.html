@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <div *ngIf="!poll" class="h4">Loading...</div>
+    <div *ngIf="errMessage" class="alert alert-danger">
+      {{ errMessage }}
+    </div>      
+    <div *ngIf="poll">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="h2 text-center">{{ poll.title }}</div>
+            <div class="h5 text-center">Created by {{ poll.author }} on {{ poll.join_date | date }}</div>    
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-6 offset-sm-3 col-lg-4">
+          <canvas id="chart" width="400" height="400"></canvas>     
+        </div>
+        <div class="col-2 offset-1 offset-sm-0 text-center">
+          <div class="h4">Vote:</div>
+          <div class="btn-group btn-group-vertical">
+            <button
+              *ngFor="let option of poll.options"
+              class="btn btn-outline-primary"
+              (click)="submitVote(poll.title, option.name)">
+              {{ option.name }}
+            </button>
+          </div>       
+        </div>
+      </div>      
+    </div>    
+  </div>
+  
+  
+  

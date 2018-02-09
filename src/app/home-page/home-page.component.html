@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 offset-4 text-center">
+      <div class="h2">Polls</div>
+      
+      <div *ngIf="!polls && !errMessage" class="h4">
+        Loading polls...
+      </div>
+      <div *ngIf="errMessage" class="alert alert-danger">{{ errMessage }}</div>
+      <div *ngIf="polls.length">
+        <ul class="list-group list-unstyled">
+          <li *ngFor="let poll of polls">
+            <a class="h4"
+            routerLink="/poll/{{poll.title}}">
+              {{ poll.title }}
+            </a>
+          </li>
+        </ul>        
+        <button class="btn btn-outline-dark mt-4" (click)="loadMore()">Load more</button> 
+      </div>      
+    </div>    
+  </div>  
+</div>

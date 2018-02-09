@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 col-lg-5 offset-1">
+      <div class="h2">New poll</div>
+      <form>
+        <div class="form-group">
+          <label for="title">Poll title:</label>
+          <input type="text"
+           class="form-control"
+            name="title"
+            required
+            [(ngModel)]="title"
+            >
+        </div>
+          <ul class="list-group list-unstyled">
+            <li class="form-group" *ngFor="let option of options">
+              <label>Voting option:</label>
+              <input type="text"
+                class="form-control"
+                required
+                name="option"
+                [(ngModel)]="option.val"
+                >
+            </li>
+          </ul>            
+        <div *ngIf="errMessage" class="alert alert-danger">{{ errMessage }}</div>
+        <button (click)="newOption()" class="btn btn-primary">New option</button>
+        <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+      </form>
+      
+    </div>
+  </div>
+</div>

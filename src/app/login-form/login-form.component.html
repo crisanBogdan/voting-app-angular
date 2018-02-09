@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 col-lg-5 offset-1">
+
+      <div class="h2">Log in:</div>
+
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input class="form-control" id="username"
+            required
+            formControlName="username"  
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password"
+            required
+            formControlName="password" 
+          >            
+        </div>
+        <div *ngIf="submitted && (!username.valid || !password.valid)"
+         class="alert alert-danger">
+         You have to enter a username and a password.
+        </div>
+        <div *ngIf="invalidLogin" class="alert alert-danger">Username or password is incorrect.</div>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+</div>

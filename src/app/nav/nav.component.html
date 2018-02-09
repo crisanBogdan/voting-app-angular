@@ -1,0 +1,28 @@
+
+  <ul class="nav">
+    <li role="navigation" class="nav-item">
+      <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
+    </li>
+    <li *ngIf="!loginService.loggedIn" role="navigation" class="nav-item">
+      <a routerLink="/login" routerLinkActive="active" class="nav-link">Log in</a>
+    </li>
+    <li *ngIf="!loginService.loggedIn" role="navigation" class="nav-item">
+      <a routerLink="/sign-up" routerLinkActive="active" class="nav-link">Sign up</a>
+    </li>
+    <li *ngIf="loginService.loggedIn" role="navigation" class="nav-item">  
+        <a routerLink="/create-poll" routerLinkActive="active" class="nav-link">Create poll</a>
+    </li>
+    <li *ngIf="loginService.loggedIn" role="navigation" class="nav-item">     
+      <div ngbDropdown class="d-inline-block">
+        <button ngbDropdownToggle class="btn btn-link"
+         routerLinkActive="active">
+          <span class="glyphicon glyphicon-user" aria-hidden="true" id="dropdown-menu-1"></span>
+            {{ loginService.loggedUsername }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdown-menu-1">
+          <button class="dropdown-item" routerLink="/my-polls/{{loginService.loggedUsername}}">My polls</button>
+          <button class="dropdown-item" routerLinkActive="active" (click)="loginService.logout()" routerLink="/login">Log out</button>
+        </div>        
+      </div>       
+    </li>
+  </ul> 
